@@ -1,0 +1,500 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIESEC in Egypt Hub</title>
+    {% load static %}
+    <style>
+      @font-face {
+        font-family: 'HeyAugust';
+        src: url('{% static "fonts/HeyAugust-VGOqe.woff2" %}') format('woff2'),
+             url('{% static "fonts/HeyAugust-VGOqe.woff" %}') format('woff'),
+             url('{% static "fonts/HeyAugust-VGOqe.ttf" %}') format('truetype');
+      }
+        
+  
+      html {
+        box-sizing: border-box;
+      }
+  
+      *, *:before, *:after {
+        box-sizing: inherit;
+        margin: 0;
+        padding: 0;
+      }
+  
+      body {
+        height: 100vh;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        color: #fff;
+        background: #012a26;
+        overflow: hidden;
+        
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+        z-index: 100;
+        width: 99%;
+        position: relative;
+      }
+  
+
+
+      header .man {
+        height: 35%;
+        width: 25%;
+        padding: 10px;
+      }
+  
+      /* Desktop Navigation */
+      header ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin-left: auto;
+      }
+  
+      header ul li {
+        margin: 20px;
+        position: relative;
+      }
+  
+      header ul li a {
+        font-family: 'HeyAugust', sans-serif;
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 25px;
+        text-decoration: none;
+        color: #fff;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+  
+      header ul li a:hover, header ul li a.mcteam {
+        background: #fff;
+        color: #012a26;
+      }
+  
+      header ul li ul {
+        display: none;
+        position: absolute;
+        top: 120%;
+        left: -10%;
+        background-color: #023530;
+        padding: 15px;
+        border-radius: 50px;
+        width:200%;
+      }
+  
+      .root1 {
+        position: absolute; 
+        top: -78%;            
+        left: 18%; 
+        weight:250%;
+        height:250%;
+        transform: translateX(20px); /* Adjust the distance from the menu item */
+        visibility: hidden; /* Hide by default */
+        opacity: -10;         /* Hide by default */
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 10;        /* Ensure it's above other elements */
+      }
+      
+      header ul li:hover .root1 {
+        visibility: visible; /* Make it visible */
+        opacity: 1;          /* Fade in */
+      }
+      
+      header ul li:hover ul {
+        display: block;
+      }
+  
+      header ul li ul li a {
+        font-size: 20px;
+        padding: 5px 10px;
+        color: #fff;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+  
+      header ul li ul li a:hover {
+        background-color: #ffffff;
+        color: #012a26;
+        border-radius: 8px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      .aslb{
+        position:absolute;
+        z-index:10;
+        left:80%;
+       
+        top:10%;
+      }
+
+
+
+
+
+      /*  Cards  */
+
+      .card {
+        width: 400px;
+        height: 290px;
+        left: 40%;
+        top:15%;
+        position:relative;
+        padding: 0.5rem;
+        background: rgba(198, 198, 198, 0.34);
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+        border-bottom: 5px solid rgba(255, 255, 255, 0.440);
+        border-left: 5px  rgba(255, 255, 255, 0.545) outset;
+        box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
+        transform: skewX(10deg);
+        transition: .4s;
+        overflow: hidden;
+        color: white;
+        z-index:20;
+      }
+      
+      .card:hover {
+        height: 500px;
+        transform: skew(0deg);
+      }
+      
+      .card h1 {
+        font-family: 'HeyAugust', sans-serif;
+        text-align: center;
+        margin: 1.3rem;
+        color: #fff;
+        text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
+        
+
+      }
+      
+      .omar{
+        position:relative;
+        width:60%;
+        height:60%;
+        left: 22%;
+      }
+      
+      .card p1{
+        position:relative;
+        font-family: 'HeyAugust', sans-serif;
+        left: 30%;
+        font-size:30px;
+
+      }
+      
+      .card p2{
+        position:relative;
+        align-items:center;
+        top:8%;
+        left: -2%;
+        font-size:20px;
+      }
+
+      .card p3{
+        position:relative;
+        align-items:center;
+        top:12%;
+        left:-28%;
+      }
+
+
+      .card p4{
+        position:relative;
+        align-items:center;
+        top:11%;
+        left:46%;
+      }
+
+
+
+
+      /* Side Menu */
+      .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        background-color: #012a26;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        height: 100%;
+        width: 300px;
+        padding: 20px;
+        transition: left 0.3s ease;
+        z-index: 200;
+      }
+  
+      .mobile-menu.show {
+        left: 0;
+      }
+  
+      .mobile-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+  
+      .mobile-menu ul li {
+        margin: 10px 0;
+      }
+  
+      .mobile-menu ul li ul {
+        display: none;
+        flex-direction: column;
+        background-color: #023530;
+        padding: 20px;
+        margin:10px;
+        border-radius: 10px;
+      }
+  
+      .mobile-menu ul li.show ul {
+        display: flex;
+      }
+  
+      .mobile-menu ul li a {
+        font-size: 30px;
+        padding: 5px 10px;
+        color: #fff;
+        font-family: 'HeyAugust', sans-serif;
+  
+      }
+  
+  
+      /* Submenu Hidden by Default */
+      .submenu {
+        display: none;
+        flex-direction: column;
+        background-color: #222;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      
+      .submenu li {
+        margin: 5px 0;
+      }
+      
+  
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+  
+      .hamburger div {
+        width: 30px;
+        height: 3px;
+        background: white;
+        margin: 5px 20px;
+        padding: 3px ;
+        transition: transform 0.3s ease;
+      }
+  
+      /* Overlay for side menu */
+      .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 150;
+        transition: opacity 0.3s ease;
+      }
+  
+      .menu-overlay.show {
+        display: block;
+      }
+  
+      @media screen and (max-width: 768px) {
+        header ul {
+          display: none;
+        }
+  
+        .hamburger {
+          display: flex;
+        }
+        .card {
+          width: 300px;
+          height: 500px; 
+          left: 15%; 
+          top: 0%;
+          transform: none; 
+          transition: none; 
+          overflow: hidden;
+
+      }
+      .card h1 {
+        font-family: 'HeyAugust', sans-serif;
+        text-align: center;
+        margin: 1.3rem;
+        color: #fff;
+        text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
+        overflow: hidden;
+
+      }
+      
+      .omar{
+        position:relative;
+        width:60%;
+        height:50%;
+        left: 22%;
+      }
+      
+      .card p1{
+        position:relative;
+        font-family: 'HeyAugust', sans-serif;
+        left: 23%;
+        font-size:30px;
+
+      }
+      
+      .card p2{
+        position:relative;
+        align-items:center;
+        top:8%;
+        left: -20%;
+        font-size:20px;
+      }
+
+      .card p3{
+        position:relative;
+        align-items:center;
+        top:12%;
+        left:35%;
+      }
+
+
+      .card p4{
+        position:relative;
+        align-items:center;
+        top:17%;
+        left:3%;
+      }
+
+      .aslb{
+        position:absolute;
+        z-index:10;
+        left:30%;
+        top:-5%;
+        width:50%;
+        height:30%;
+      }
+
+
+    }  
+    </style>
+</head>
+<body>
+    <header>
+        <h2>
+          <img src="{% static 'image/man.png' %}" class="man" alt="AIESEC Logo">
+        </h2>
+      
+      <!-- Hamburger Icon -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+  
+      <!-- Desktop Navigation -->
+      <ul>
+          <li><a href="/" class="home">Home</a></li>
+          <li>
+            <a href="#">Academies</a>
+            <ul>
+              <li><a href="#">IGV Academy</a></li>
+              <li><a href="#">OGV Academy</a></li>
+              <li><a href="#">IGTe/a Academy</a></li>
+              <li><a href="#">OGTe/a Academy</a></li>
+              <li><a href="#">B2C Academy</a></li>
+              <li><a href="#">B2B Academy</a></li>
+              <li><a href="#">MXP Academy</a></li>
+              <li><a href="#">FnL Academy</a></li>
+              
+            </ul>
+          </li>
+          
+          <li>
+            <a href="#">Conference Outputs</a>
+            <ul>
+             <li><a href="https://drive.google.com/drive/u/0/folders/1pUoCgYgEvuRCN92hRBj2UGYOhnhvQYR6?fbclid=IwZXh0bgNhZW0CMTAAAR02yjQEUphKLFT9Rz7FAOvJFA-14Hij8TpoqBj0g46YnVU5mkA_XI2xTKI_aem_NF_5iBFHqGHDgweUzDj8ow">Fusion 24'</a></li>
+             <li><a href="https://drive.google.com/drive/folders/1lI5yUZvgpQFvA11P3QI_csBnn3Xg1Ivw?fbclid=IwZXh0bgNhZW0CMTAAAR28ZoaA9Eh0tjD37VcJx1VXZAU0SYzYrc4nKBbt0KDhEP2eiNMxxfeHYCE_aem_ZLkZ1CmK8GmQeQQpbbz1Kw">Activate 24'</a></li>
+             <img src="{% static 'image/root.png' %}" class="root1" >
+            </ul>
+        </li>
+          <li><a href="/meet-mc-team/" class="mcteam">Meet MC Team</a></li>
+          <li><a href="#">Contact List</a></li>
+        </ul>
+    </header>
+       
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="/" class="home">Home</a></li>
+        <li>
+          <a href="#" onclick="toggleSubmenu('academiesSubmenu')">Academies</a>
+          <ul id="academiesSubmenu" class="submenu">
+            <li><a href="#">IGV Academy</a></li>
+            <li><a href="#">OGV Academy</a></li>
+            <li><a href="#">IGTe/a Academy</a></li>
+            <li><a href="#">OGTe/a Academy</a></li>
+            <li><a href="#">B2C Academy</a></li>
+            <li><a href="#">B2B Academy</a></li>
+            <li><a href="#">MXP Academy</a></li>
+            <li><a href="#">FnL Academy</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleSubmenu('conferenceSubmenu')">Conference Outputs</a>
+          <ul id="conferenceSubmenu" class="submenu">
+              <li><a href="https://drive.google.com/drive/u/0/folders/1pUoCgYgEvuRCN92hRBj2UGYOhnhvQYR6?fbclid=IwZXh0bgNhZW0CMTAAAR02yjQEUphKLFT9Rz7FAOvJFA-14Hij8TpoqBj0g46YnVU5mkA_XI2xTKI_aem_NF_5iBFHqGHDgweUzDj8ow">Fusion 24'</a></li>
+              <li><a href="https://drive.google.com/drive/folders/1lI5yUZvgpQFvA11P3QI_csBnn3Xg1Ivw?fbclid=IwZXh0bgNhZW0CMTAAAR28ZoaA9Eh0tjD37VcJx1VXZAU0SYzYrc4nKBbt0KDhEP2eiNMxxfeHYCE_aem_ZLkZ1CmK8GmQeQQpbbz1Kw">Activate 24'</a></li> 
+          </ul>
+        </li>
+        <li><a href="/meet-mc-team/" class="mcteam">Meet MC Team</a></li>
+          <li><a href="#">Contact List</a></li>
+      </ul>
+    </div>
+  
+    <div> <img src="{% static 'image/aslb.png' %}" class="aslb" ></div>
+
+
+    <div class="card">
+
+      <img src="{% static 'image/omar.png' %}" class="omar" >
+    
+        <h1>MCP</h1>
+        <p1>Omar Abdelaziz</p1>
+        <p2>contacts:</p2>
+        <p3>phone number:</p3>
+        <p4>email:</p4>
+    </div>
+    
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('menuOverlay');
+        menu.classList.toggle('show');
+        overlay.classList.toggle('show');
+      }
+      function toggleSubmenu(submenuId) {
+          const submenu = document.getElementById(submenuId);
+          submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+        }
+        
+    </script>
+
+</body>
+
+
